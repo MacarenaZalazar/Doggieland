@@ -1,49 +1,45 @@
 const { Router } = require('express');
 const router = Router()
-const {Dog, Op} = require('../db')
-const {YOUR_API_KEY} = process.env
-const axios = require('axios')
+const e = require('express');
+const { getAllApiDogs, getAllSqlDogs, getSqlDogsByName, getApiDogsByName, getDogsByPk, getDogsById } = require('../utils/getters')
 
 router.get('/', async (req,res) =>{
     const {name} = req.query
-    let breeds, apiBreeds, psqlBreeds
-    
+    let breeds, sqlBreeds, apiBreeds
+
     if(name){
-        res.send(name + ' estoy en /dogs/query')
-        psqlBreeds = await Dog.findAll({
-            where: {
-                name: {[Op.like]: `%${name}%`}
-            }
-        }) 
-
+        sqlBreeds = await getSqlDogsByName(name)
+        apiBreeds = await getApiDogsByName(name)
     } else {
-    
-        apiBreeds = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${YOUR_API_KEY}`)
-        apiBreeds = apiBreeds.data.map(e => e.name)
-        psqlBreeds = await Dog.findAll()       
+        sqlBreeds = await getAllSqlDogs()
+        apiBreeds = await getAllApiDogs()
     }
-    breeds = [...psqlBreeds.map(e=> e.name), ...apiBreeds]
-    res.send(breeds)
 
+    breeds = [...psqlBreeds,...apiBreeds]
+
+    if(breeds.length>0) {
+        res.send(breeds)
+    } else {
+        res.status(400).send("There's no breed that matches")
+    }
 })
+
 
 
 router.get('/:idRaza', async (req, res) => {
     const { idRaza } = req.params
     //res.send('estoy en get / idRaza')
     let dog
-    console.log(idRaza)
     if(idRaza.length < 10){ 
-        dog = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${YOUR_API_KEY}`)
-        dog = dog.data.find(el => el.id == idRaza)
-        res.send(dog)
-        //console.log(dog)
-        //res.send(dog)
+        dog = await getDogsById(idRaza)
     } else {
-        res.send('en la base de datos')
+        dog = await getDogsByPk(idRaza)
     }
-        dog = await Dog.findByPk(idRaza)
-    res.send(dog)
+    if(dog){
+        res.send(dog)
+    } else {
+        res.status(400).send("There's no id that matches")
+    }
 })
 
 

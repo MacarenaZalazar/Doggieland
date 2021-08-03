@@ -1,10 +1,9 @@
 const { Router } = require('express');
 const router = Router()
-const { Temperament } = require('../db.js')
+const { getTemperamentsName } = require('../utils/getters')
 
 router.get('/', async (req,res) =>{
-    var temperaments = await Temperament.findAll()
-    temperaments = temperaments.map(t => t.name)
+    let temperaments = await getTemperamentsName()
     res.send(temperaments)
 })
 

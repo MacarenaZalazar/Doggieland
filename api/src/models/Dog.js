@@ -17,13 +17,20 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    weigth: {
+    weight: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    years: {
+    life_span: {
       type: DataTypes.INTEGER
+    },
+    image:{
+      type: DataTypes.STRING
+    },
+    temperament: {
+      type: DataTypes.STRING
     }
 
   });
 };
+
