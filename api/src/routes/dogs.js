@@ -13,9 +13,10 @@ router.get('/', async (req,res) =>{
     } else {
         sqlBreeds = await getAllSqlDogs()
         apiBreeds = await getAllApiDogs()
+        
     }
 
-    breeds = [...psqlBreeds,...apiBreeds]
+    breeds = [...sqlBreeds,...apiBreeds]
 
     if(breeds.length>0) {
         res.send(breeds)

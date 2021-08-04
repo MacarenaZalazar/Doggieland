@@ -1,13 +1,13 @@
 const axios = require('axios');
 const {YOUR_API_KEY} = process.env
-const {Dog, Temperament} = require('../db')
-
+const {Dog, Temperament, Op} = require('../db')
 
 const exclude = { atributes: { exclude: ['createdAt', 'UpdatedAt']}}
 
 //mapeo para que solo me venga la info que necesito de la Api
 function mapping(doggies){
-    doggies.map(e => {
+   
+    let dogsList = doggies.map(e => {
         return { 
             id: e.id, 
             name: e.name, 
@@ -18,6 +18,7 @@ function mapping(doggies){
             temperament: e.temperament
         }
     })
+    return dogsList
 }
 
 //traigo los nombres de los temperamentos de la DB
@@ -28,33 +29,37 @@ async function getTemperamentsName(){
 }
 
 //traigo los temperamentos según su nombre
-async function getTemperamentsById(name){
-    let temp =  await Temperament.findAll(exclude , {where: { name: name}})
-    return temp.map(e => e.id)
+async function getTemperamentsById(array){
+        let temp = await Temperament.findAll({raw: true, where: { name: {[Op.or]: array } } })
+        temp = temp.map(e => e.id)
+        let ids = temp.toString()
+        return ids
+        
+ 
 }
 
 //traigo todas las razas de la Api
 async function getAllApiDogs() {
     let dogs = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${YOUR_API_KEY}`)
-    dogs = dogs.data
-    return mapping(dogs)
+    dogs = mapping(dogs.data)
+    return dogs
 }
 
 //traigo todas las razas de la DB
 async function getAllSqlDogs() {
-    let dogs = await Dogs.findAll(exclude)
+    let dogs = await Dog.findAll(exclude)
     return dogs
 }
 
 //traigo las razas filtradas por nombre de la DB
 async function getSqlDogsByName(name){
-    let dogs = await Dogs.findAll(exclude, { where: { name: {[Op.like]: `%${name}%`}}})
+    let dogs = await Dog.findAll({ where: { name: {[Op.like]: `%${name}%`}}})
     return dogs
 }
 
 //traigo todas las razas filtradas por nombre de la Api
 async function getApiDogsByName(name){
-    let dogs = getAllApiDogs()
+    let dogs = await getAllApiDogs()
     dogs = dogs.filter(e =>  e.name.toLowerCase().includes(name.toLocaleLowerCase()))
     return dogs
 }
@@ -68,9 +73,10 @@ async function getDogsByPk(pk){
 //traigo todas las razas filtradas por id de la Api
 async function getDogsById(id){
     let dogs = await getAllApiDogs()
-    let dogId = dogs.find( e => {
-        e.id === id
-    })
+    id = parseInt(id)
+    console.log(typeof id)
+    let dogId = dogs.filter( e => e.id === id)
+    console.log(dogId)
     return dogId
 }
 

@@ -1,12 +1,14 @@
 const { Router } = require('express');
 const router = Router()
 const { Dog } = require('../db')
+const {getTemperamentsById} = require('../utils/getters')
 
 router.post('/', async (req,res) =>{
-    const {name, height, weight, lifespan} = req.body
+    const {name, height, weight, life_span, image, temperament} = req.body
+    let temperamentId =  await getTemperamentsById(temperament)
     const newDog = await Dog.findOrCreate({
         where: {
-            name, height, weight, lifespan
+            name, height, weight, life_span, image, temperament: temperamentId
         }
     })
     res.send(newDog)
