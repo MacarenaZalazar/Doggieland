@@ -6,11 +6,14 @@ const {getTemperamentsById} = require('../utils/getters')
 router.post('/', async (req,res) =>{
     const {name, height, weight, life_span, image, temperament} = req.body
     let temperamentId =  await getTemperamentsById(temperament)
-    const newDog = await Dog.findOrCreate({
+    const newDog = await Dog.findOrCreate({raw: true, 
         where: {
-            name, height, weight, life_span, image, temperament: temperamentId
+            name, height, weight, life_span, image
         }
     })
+
+    await newDog[0].setTemperaments(temperamentId)
+    console.log(newDog)
     res.send(newDog)
 })
 

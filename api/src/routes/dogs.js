@@ -6,7 +6,6 @@ const { getAllApiDogs, getAllSqlDogs, getSqlDogsByName, getApiDogsByName, getDog
 router.get('/', async (req,res) =>{
     const {name} = req.query
     let breeds, sqlBreeds, apiBreeds
-
     if(name){
         sqlBreeds = await getSqlDogsByName(name)
         apiBreeds = await getApiDogsByName(name)
