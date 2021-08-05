@@ -86,7 +86,6 @@ async function getDogsById(id){
     id = parseInt(id)
     console.log(typeof id)
     let dogId = dogs.filter( e => e.id === id)
-    console.log(dogId)
     return dogId
 }
 
@@ -97,7 +96,6 @@ async function syncTemperaments(){
     let temperaments = []
     //hago request a la api para traer todos los perros
    let dogsList = await getAllApiDogs()
-   console.log(dogsList)
    //mapeo para hacer un array de cada temperamento
    dogsList.map(e => {
        if(e.temperament) {
@@ -107,7 +105,6 @@ async function syncTemperaments(){
    
    //lo convierto en un set para quitar los repetidos y los ordeno por orden alfabético
    temperaments = [...new Set(temperaments.sort())]
-   console.log(temperaments)
    //creo temperamentos
    temperaments.map(t => {
        Temperament.create({
