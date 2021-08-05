@@ -4,18 +4,20 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getBreedsById } from '../../actions';
 
 
-export default function BreedsDetail(props) {
+export default function BreedDetail(props) {
+    
     let id = props.match.params.id
+
     const dispatch = useDispatch()
-    useEffect(() => {
-      dispatch(getBreedsById(id))
-  }, [])
-  
     const b = useSelector(state => state.breedId[0])
-    console.log(b)
+  
+    
+    useEffect(() => {
+        console.log('estoy en useEfect!')
+        dispatch(getBreedsById(id))
+    }, [])
+   
     return b ? ( <div>
-        
-            <p>Soy BreedsDetail</p>
             <h1>{(b.name) && b.name}</h1>
             <img src={b.image}  alt={b.name} />
             <h3>{b.height}</h3>
@@ -25,7 +27,6 @@ export default function BreedsDetail(props) {
        
         </div>
     ) : (
-        <p>loading</p>
-    ) 
-
+        <p>Loading...</p>
+    )
 }

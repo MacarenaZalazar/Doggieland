@@ -1,39 +1,31 @@
-import React, {useEffect, useState} from 'react'
-import { useDispatch, useSelector, useStore } from 'react-redux'
-import { Link } from 'react-router-dom';
-import { getBreeds } from '../../actions/index'
+import React  from 'react'
 
 
-export default function Breeds() {
-    const dispatch = useDispatch()
-    useEffect(() => {
-    console.log('estoy en use effect')
-      dispatch(getBreeds())
-    }, [])
 
-    let store = useSelector(state => state.breeds)
- 
-
-    return  ( 
+export default function Breeds(props) {
+    console.log(props)
+    const breeds = props.breeds
+    const status = props.status
+    return  breeds ? ( 
         <div> 
-            <h1>I'm Breeds</h1>
-             { store ? store.map(b => {
-            return <div> 
-                <Link to={`/breedsDetail/${b.id}`}>
+             { breeds.map(b => {
+                 status === breeds.status &&
+            <div> 
+                 <Breed breeds={filtered} status='Filtered'/>   
+                 <Breed breeds={breeds} status='All'/>
+                <Link to={`/breedDetail/${b.id}`}>
                     <h3>{b.name}</h3>
                 </Link>
             <img src={b.image} alt={b.name}/>
              <p>{(b.temperament) && b.temperament.toString()}</p>
-             
-            
             </div>
-        }) : (
+        }) } 
+            </div>
+        ) : (
             <p>loading</p>
         )
-        }
         
-        </div>
-    )
+    
 }
 
 
