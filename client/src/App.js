@@ -1,11 +1,9 @@
 import './App.css';
 import { Route } from 'react-router-dom'
-import BreedDetail from './components/Breeds/BreedDetail';
+import BreedDetail from './components/BreedDetail/BreedDetail';
 import NavBar from './components/NavBar/NavBar';
-import CreateBreed from './components/Breeds/CreateBreed'
+import CreateBreed from './components/CreateBreed/CreateBreed'
 import LandingPage from './components/LandingPage/LandingPage'
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux'
 import Home from './components/Home/Home';
 
 
@@ -21,7 +19,7 @@ function App() {
         <Home/>
       </Route>
         <Route path='/breedDetail/:id' component={BreedDetail}/>
-        <Route path='/createBreed'>
+        <Route path='/create'>
           <CreateBreed/>
         </Route>
     </div>

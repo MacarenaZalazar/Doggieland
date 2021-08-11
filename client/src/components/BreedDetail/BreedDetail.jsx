@@ -20,9 +20,9 @@ export default function BreedDetail(props) {
     return b ? ( <div>
             <h1>{(b.name) && b.name}</h1>
             <img src={b.image}  alt={b.name} />
-            <h3>{b.height}</h3>
-            <h3>{b.weight}</h3>
-            <h3>{b.life_span}</h3>
+            <h3>{b.height} cm</h3>
+            <h3>{b.weight} kg</h3>
+            <h3>{b.life_span} years</h3>
             <p>{(b.temperament) && b.temperament.toString()} </p>
        
         </div>

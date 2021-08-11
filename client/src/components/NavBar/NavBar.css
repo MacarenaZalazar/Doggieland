@@ -4,4 +4,6 @@
     text-align: center;
     margin-left: 40px;
     margin-right: 40px;
+    border-bottom: slategray 1px solid;
+    font-size: medium;
 }

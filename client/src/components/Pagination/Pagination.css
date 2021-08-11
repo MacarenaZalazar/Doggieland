@@ -1,0 +1,14 @@
+.paginationContainer{
+    width: 100%;
+    height: auto;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.paginationUl{
+    display:flex
+}
+.paginationLi{
+    list-style: none;
+}
+
