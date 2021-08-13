@@ -1,11 +1,22 @@
 .containerDetail{
-    order: 3;
-    width: 96%;
+    display: inline-block;
+    background-color: white;
+    border-radius: 15px;
+    padding: 15px 10px;
+    height: 300px;
+    margin: 10px 0;
     max-width: 960px;
-    margin: 0 auto;
+}
+.containerDetail h1{
+    font-size: 20px;
 }
 .containerDetailimg{
+    margin: 5px 0;
     border-radius: 10px;
-    width: 100%;
-    height: auto;
+    width: auto;
+    max-width: 90%;
+    max-height: 125px;
+}
+.containerDetail h3{
+    font-size: 15px;
 }
