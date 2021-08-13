@@ -1,9 +1,25 @@
-.nav-container{
+.nav-container{ 
     display: flex;
     justify-content: space-between;
     text-align: center;
-    margin-left: 40px;
-    margin-right: 40px;
     border-bottom: slategray 1px solid;
-    font-size: medium;
+    font-size: small;
+    background-color: whitesmoke;
+    position:fixed;
+    width: 100%;
+    min-height:50px;
+    top: 0; right: 0
+}
+.nav-container a{ 
+    text-decoration: none;
+}
+.buttonNav{
+    margin: 5px;
+    padding: 10px ;
+    font-size: 20px;
+    border: 1px solid #cecece;
+    padding: 15px 10px;
+    border-radius: 5px;
+    background: #bebebe;
+    color: #000
 }

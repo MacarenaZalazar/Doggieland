@@ -17,9 +17,8 @@ export default function Pagination({itemsPerPage, totalItems, paginate}){
             { pageNumbers.map((n) => {
                 return  <button onClick={()=> paginate(n)} className='paginationLi' key={n} id={n}>{n}</button>  
             }) 
-        }
-        </ul>
-        
+            }
+            </ul>
         </div>
 
     )

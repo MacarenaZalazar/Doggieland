@@ -1,15 +1,29 @@
 .dogsContainer{
     display: grid;
-    
+    grid-template-columns: auto auto auto;
+    grid-gap: 10px;  
+    padding: 0 10px
+
 }
 .doggieDiv{
-    order: 3;
-    width: 96%;
+    display: inline-block;
+    background-color: white;
+    border-radius: 15px;
+    padding: 15px 10px;
+    height: 200px;
+    margin: 10px 0;
     max-width: 960px;
-    margin: 0 auto;
 }
+.doggieDiv a{
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
 .dogImg{
+    margin: 5px 0;
     border-radius: 10px;
-    width: 100%;
-    height: auto;
+    width: auto;
+    max-width: 90%;
+    max-height: 125px;
 } 

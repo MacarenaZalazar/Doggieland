@@ -8,10 +8,10 @@ export default function NavBar() {
         <>
         <div className='nav-container'>
             <Link to='/home'>
-            <h1>Home</h1>
+            <h1 className='buttonNav'>Home</h1>
             </Link>
             <Link to='/create'>
-            <h1>Create</h1>
+            <h1 className='buttonNav'>Create</h1>
             </Link>
         </div>
         </>

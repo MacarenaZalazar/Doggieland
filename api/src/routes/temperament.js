@@ -1,13 +1,14 @@
 const { Router } = require('express');
 const router = Router()
-const { getTemperamentsName } = require('../utils/getters')
+const { getTemps } = require('../utils/routesFunctions')
+const {getTemperamentsName} = require ('../utils/gettersTemperaments')
 
-router.get('/', async (req,res) =>{
+router.get('/', async(req, res, next) => {
     try {
-        let temperaments = await getTemperamentsName()
-        res.send(temperaments)
+        const temps = await getTemperamentsName()
+        res.send(temps)
     } catch (error) {
-        
+        next(error)
     }
 })
 

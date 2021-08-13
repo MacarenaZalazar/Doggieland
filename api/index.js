@@ -17,10 +17,9 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const { default: axios } = require('axios');
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
-const {syncTemperaments} = require('./src/utils/getters')
+const {syncTemperaments} = require('./src/utils/gettersTemperaments')
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {

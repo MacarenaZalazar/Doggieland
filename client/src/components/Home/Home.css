@@ -1,0 +1,6 @@
+.filterContainer{
+    display: flex;
+}
+.filterContainer div{
+    border:brown 1px solid
+}

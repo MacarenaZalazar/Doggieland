@@ -3,7 +3,6 @@ import { GET_BREEDS, GET_BREEDS_BY_QUERY, GET_BREEDS_BY_ID, POST_BREED, DOG_ORDE
 const initialState = { allBreeds:[], breeds: [], breedId: [], temperaments:[]}
 
   function rootReducer(state = initialState, action) {
-    console.log(action)
     switch (action.type) {
       case GET_BREEDS:
         return {
@@ -64,12 +63,12 @@ const initialState = { allBreeds:[], breeds: [], breedId: [], temperaments:[]}
         if(action.payload === 'Api'){
           return{
             ...state,
-            breeds: state.allBreeds.filter(e => typeof id !== 'number' )
+            breeds: state.allBreeds.filter(e => typeof e.id === 'number'  )
           }
         } else if(action.payload === 'User') {
           return {
             ...state,
-            breeds: state.allBreeds.filter(e =>  typeof id === 'number' )
+            breeds: state.allBreeds.filter(e =>  e.id.length>10 )
           }
         } else {
           return{

@@ -1,0 +1,11 @@
+.containerDetail{
+    order: 3;
+    width: 96%;
+    max-width: 960px;
+    margin: 0 auto;
+}
+.containerDetailimg{
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+}

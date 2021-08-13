@@ -1,45 +1,41 @@
 const { Router } = require('express');
 const router = Router()
 const e = require('express');
-const { getAllApiDogs, getAllSqlDogs, getSqlDogsByName, getApiDogsByName, getDogsByPk, getDogsById } = require('../utils/getters')
+const { getBreedsByName, getAllBreeds, getBreedById } = require('../utils/routesFunctions')
 
-router.get('/', async (req,res) =>{
+router.get('/', async (req,res, next) =>{
     const {name} = req.query
-    let breeds, sqlBreeds, apiBreeds
-    if(name){
-        sqlBreeds = await getSqlDogsByName(name)
-        apiBreeds = await getApiDogsByName(name)
-    } else {
-        sqlBreeds = await getAllSqlDogs()
-        apiBreeds = await getAllApiDogs()
-        
-    }
-
-    breeds = [...sqlBreeds,...apiBreeds]
-
-    if(breeds.length>0) {
-        res.send(breeds)
-    } else {
-        res.status(400).send("There's no breed that matches")
+    let breeds
+    try {
+        if(name){
+           breeds = await getBreedsByName(name)
+        } else {
+          breeds = await getAllBreeds()
+        }
+        if(breeds.length>0) {
+            res.send(breeds)
+        } else {
+            res.status(400).send("There's no breed that matches")
+        }
+    } catch (error) {
+        next(error)
     }
 })
 
 
-
-router.get('/:idRaza', async (req, res) => {
+router.get('/:idRaza', async (req, res, next) => {
     const { idRaza } = req.params
-    //res.send('estoy en get / idRaza')
     let dog
-    if(idRaza.length < 10){ 
-        dog = await getDogsById(idRaza)
-    } else {
-        dog = await getDogsByPk(idRaza)
-    }
-    if(dog){
-        res.send(dog)
-    } else {
-        res.status(400).send("There's no id that matches")
-    }
+    try {
+        dog = await getBreedById(idRaza)
+        if(dog){
+            res.send(dog)
+        } else {
+            res.status(400).send("There's no id that matches")
+        }
+    } catch (error) {
+        next(error)
+    }  
 })
 
 

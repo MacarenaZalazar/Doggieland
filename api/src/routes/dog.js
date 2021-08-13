@@ -1,20 +1,15 @@
 const { Router } = require('express');
 const router = Router()
-const { Dog } = require('../db')
-const {getTemperamentsById} = require('../utils/getters')
+const {postBreed} = require('../utils/routesFunctions')
 
-router.post('/', async (req,res) =>{
+router.post('/', async (req,res, next) =>{
     const {name, height, weight, life_span, image, temperament} = req.body
-    let temperamentId =  await getTemperamentsById(temperament)
-    const newDog = await Dog.findOrCreate({ 
-        where: {
-            name, height, weight, life_span, image
-        }
-    })
-    
-
-    await newDog[0].setTemperaments(temperamentId)
-    res.send(newDog)
+    try {
+        const newDog = await postBreed(name, height, weight, life_span, image, temperament)
+        res.send(newDog)
+    } catch (error) {
+        next(error)
+    }    
 })
 
 

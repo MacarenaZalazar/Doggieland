@@ -6,20 +6,16 @@ import './Breeds.css'
 export default  function Breeds(props) {
     
     const breeds = props.breeds
-    //console.log(breeds) 
+    console.log(breeds) 
     const [pageNumber, setPageNumber] = useState(1)
     const itemsPerPage = 9
     const idxLastItem = pageNumber * itemsPerPage 
     const idxFirstItem = idxLastItem - itemsPerPage
     const currentITems = breeds && breeds.slice(idxFirstItem, idxLastItem)    
     const totalItems = breeds && breeds.length 
-    //console.log(totalItems)
-    //console.log(pageNumber)
-    //console.log(currentITems)
 
     const pagesVisited = pageNumber * itemsPerPage 
     
-    //console.log(pagesVisited)
   
    
 
@@ -34,16 +30,13 @@ export default  function Breeds(props) {
         )
     }
     function paginate(e){
-        console.log(e)
         setPageNumber(Number(e))
     }
 
 
     return  breeds ? ( 
         <>
-        <div>
             <Pagination totalItems={totalItems} itemsPerPage={itemsPerPage} paginate={paginate} />
-        </div>
         <div className='dogsContainer'>
             {displayBreeds(currentITems)}
         </div>

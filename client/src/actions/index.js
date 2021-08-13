@@ -46,7 +46,7 @@ export function getBreedsById(id){
 
 export function postNewBreed(dog){
     return function(dispatch){
-        return  axios.post(`${BACKEND}/dog`, dog)(response => {
+        return  axios.post(`${BACKEND}/dog`, dog).then(response => {
             dispatch(
                 {type: POST_BREED, payload: response.data}
             )   

@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import Breeds from '../Breeds/Breeds'
 import { filterByTemp, getBreeds, getBreedsByQuery, getTemperaments, orderAZ, filterByOrigin, orderByWeight } from '../../actions/index'
-import { useDispatch, useSelector, useStore } from 'react-redux'
-
+import { useDispatch, useSelector} from 'react-redux'
+import'./Home.css'
 
 
 
@@ -68,49 +68,52 @@ export default function Home(){
 
     return (
         <>
-            <h3>You're Home!</h3>
-            
+        <div className='filterContainer'>
             <span>Order by</span>
             <div>
-
-            <select value={selectAZ} onChange={handleFilter}>
-                <option value="A-Z">A-Z</option>
-                <option value="Z-A">Z-A</option>
-            </select>
-            </div>
-            <span>Filter by </span>
-            <div>
-
-            <span>Temperament</span>
-            <select value={temps} onChange={handleTemps}>
-                <option value="All">All</option>
-                {temperaments.map((t, idx) => {
-                    return <option key={idx} value={t}>{t}</option>
-                })}
-            </select>
+                <span>A-Z</span>
+                <select value={selectAZ} onChange={handleFilter}>
+                    <option value="A-Z">A-Z</option>
+                    <option value="Z-A">Z-A</option>
+                </select>
             </div>
             <div>
             <span>Weight</span>
-            <select onChange={handleWeight} value={weight}>
-                <option value="Default">Default</option>
-                <option value="Asc">Asc</option>
-                <option value="Desc">Desc</option>
-            </select>
+                <select onChange={handleWeight} value={weight}>
+                    <option value="Default">Default</option>
+                    <option value="Asc">Asc</option>
+                    <option value="Desc">Desc</option>
+                </select>
             </div>
+            <span>Filter by </span>
+            <div>
+                <span>Temperament</span>
+                <select value={temps} onChange={handleTemps}>
+                    <option value="All">All</option>
+                    {temperaments.map((t, idx) => {
+                        return <option key={idx} value={t}>{t}</option>
+                    })}
+                </select>
+            </div>
+            <div>
             <span>Created by</span>
             <select onChange={handleCreated} value={created}>
                 <option value="All">All</option>
                 <option value="Api">Api</option>
                 <option value="User">User</option>
             </select>
+            </div>
+            <div>
             <p>Search by name</p>
             <form onSubmit={handleSubmit}>
                 <input type="text" placeholder='breed...' value={input} onChange={handleChange} />
                 <button type='submit'>Search!</button>
             </form>
+            </div>
+        </div>
+        <div>
             <Breeds breeds={breeds} />
-            
-           
+        </div>
         </>
     )
 }
