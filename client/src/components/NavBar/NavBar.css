@@ -1,12 +1,12 @@
 .nav-container{ 
+    font-family: 'Amatic SC', cursive;
     background-color: #fef8d5;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     text-align: center;
-    border-bottom: #000 1px solid;
+    border-bottom: #7D732F 1px solid;
     font-size: small;
     position: fixed;
-    font-family: 'WindSong', cursive;;
     width: 100%;
     min-height:50px;
     top: 0; right: 0
@@ -17,14 +17,19 @@
 .buttonNav{
     cursor: pointer;
     text-align: center;
-    margin: 5px;
+    margin: 5px 20px;
     padding: 10px ;
-    font-size: 20px;
+    font-size: 30px;
     padding: 15px 10px;
-    border-radius: 5px;
+    border-radius: 50px;
     background: #d4c4b5;
+    border: 1px solid #d4c4b5;
     color: #000
 }
 .buttonNav:hover{
+    border-radius: 60px;
+    width: 60px;
+    height: 35px;
+    font-size: 35px;
     background-color: white;
 }

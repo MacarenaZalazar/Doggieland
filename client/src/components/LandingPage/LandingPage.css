@@ -1,25 +1,42 @@
 .ladingDiv{
+    margin-top: 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    /* background: #dddcdd url('https://media-cldnry.s-nbcnews.com/image/upload/t_fit-560w,f_auto,q_auto:best/newscms/2020_28/1587661/dogs-age-years-kb-inline-200707.jpg') no-repeat center bottom; */
-    background-color: #ffde15 ;
-    background-image: url('https://cdn.pixabay.com/photo/2021/01/23/07/53/dogs-5941898_960_720.jpg')  ;
-    height: 100%;
+    justify-content: space-evenly;
+    background: #ffde15 url('https://cdn.pixabay.com/photo/2021/01/23/07/53/dogs-5941898_960_720.jpg') no-repeat center; 
+    height: 105%;
 }
 .ladingDiv a{
     display: block;
 }
 .ladingDiv h1{
-    font-family: 'WindSong', cursive;;
+    font-family: 'Amatic SC', cursive;
     font-size: 30px;
     margin-bottom: 10px;
 }
-
+.ladingDiv span{
+    /*font-family: 'WindSong', cursive;*/
+    font-size: 40px;
+}
+.ladingDiv button{
+    cursor: pointer;
+    text-align: center;
+    margin: 5px 20px;
+    padding: 10px ;
+    font-size: 20px;
+    padding: 15px 10px;
+    border-radius: 50px;
+    background: #d4c4b5;
+    border: 1px solid #d4c4b5;
+    font-family: 'Amatic SC', cursive;
+    color: #000
+}
 .ladingDiv button:hover{
-  background-color: aqua;
-  border-radius: 10px;  
+    height: 75px;
+    width: 75px;
+    background-color: white;
+
 }
 body{
     height: 100%;

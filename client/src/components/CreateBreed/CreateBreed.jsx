@@ -7,77 +7,68 @@ import './CreateBreed.css'
 
 
 export default function CreateBreed() {
-const [input, setInput] = useState({ 
-    name: '',
-    min_height:'', 
-    max_height: '', 
-    min_weight: '', 
-    max_weight:'',
-    min_life_span:'', 
-    max_life_span: '',
-    image: '',
+    const [input, setInput] = useState({})
+    const [flag, setFlag] = useState(true)
+    const [temps, setTemps] = useState([])   
+    const [errors, setErrors] = useState({})
+    const state = useSelector(state => state)
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getTemperaments())
+    },[])
 
-})
-
-const [temps, setTemps] = useState([])   
-const [errors, setErrors] = useState('')
-const state = useSelector(state => state)
-const dispatch = useDispatch()
-
-useEffect(() => {
-    dispatch(getTemperaments())
-},[])
-
-console.log(state)
-
-function handleChange(e){
-    e.preventDefault()
-    const {value, name} = e.target
-    setInput({
-        ...input,
-        [name]:value
-    })
-    console.log(input)
-    setErrors(validate({
-        ...input,
-        [e.target.name]: e.target.value
-    }
-    ))
-}
-
-
-function handleTemps(e){
-    if(!temps.includes(e.target.value)){
-        if(temps.length > 0){
-            setTemps([...temps, e.target.value])
-        } else {
-            setTemps([e.target.value])
+    console.log(flag)
+    function handleChange(e){
+        e.preventDefault()
+        setFlag(false)
+        const {value, name} = e.target
+        setInput({
+            ...input,
+            [name]:value
+        })
+        console.log(input)
+        setErrors(validate({
+            ...input,
+            [e.target.name]: e.target.value
         }
-    } 
-
-}
-
-  
-
-
-function handleSubmit(e){
-    e.preventDefault()
-
-    const newDog= {
-        name: input.name,
-        height: `${input.min_height} - ${input.max_height}`,
-        weight: `${input.min_weight} - ${input.max_weight}`,
-        life_span: `${input.min_life_span} - ${input.max_life_span}`,
-        image: input.image,
-        temperament: temps
+        ))
     }
-    dispatch(postNewBreed(newDog))
-}
 
-function handleClick(e){
-    e.preventDefault()
-    setTemps(temps.filter(t => t !== e.target.value))
-}
+    const actualErrors = Object.keys(errors)
+
+    function handleTemps(e){
+        if(!temps.includes(e.target.value)){
+            if(temps.length > 0){
+                setTemps([...temps, e.target.value])
+            } else {
+                setTemps([e.target.value])
+            }
+        } 
+
+    }
+
+    console.log(input.name)
+
+
+    function handleSubmit(e){
+        e.preventDefault()
+
+        const newDog= {
+            name: input.name,
+            height: `${input.min_height} - ${input.max_height}`,
+            weight: `${input.min_weight} - ${input.max_weight}`,
+            life_span: `${input.min_life_span} - ${input.max_life_span}`,
+            image: input.image,
+            temperament: temps
+        }
+        dispatch(postNewBreed(newDog))
+    }
+
+    console.log(flag)
+    function handleClick(e){
+        e.preventDefault()
+        setTemps(temps.filter(t => t !== e.target.value))
+    }
 
 
     return (
@@ -152,14 +143,14 @@ function handleClick(e){
                 <label >Temperament</label>
                 <select name="temperaments" onChange={handleTemps}  type="text" >
                 <option value={null}></option>
-                {state.temperaments.map(e=>{
+                {state.temperaments.map((e, idx)=>{
                     return (
-                        <option value={e}>{e}</option>
+                        <option key={idx} value={e}>{e}</option>
                         )
                     })}
                     </select>
                 </div>
-                <div className='temperaments'>
+                <div className='divCreateName'>
 
                     { temps.map((e, idx) =>{
                         return ( 
@@ -171,9 +162,8 @@ function handleClick(e){
                         })    
                     }
                 </div>
-                <div className='buttonDiv'>
-                    <button  disabled={(errors)}>Add Breed</button>
-                </div>
+                    <button  disabled={(actualErrors.length>0) || flag === true}>Add Breed</button>
+        
             </form>
         </div>
         </>

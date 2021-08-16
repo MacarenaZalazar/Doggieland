@@ -12,7 +12,7 @@ export default function Breed(props){
             {
                 doggie.image ? <img className='dogImg' src={doggie.image} alt={doggie.name}/> : <p><loading className=""></loading></p>
             }
-             <p>{(doggie.temperament) && 'Temperament: '+doggie.temperament.join(', ')}</p>
+             <p>{(doggie.temperament) && <u>Temperament:</u>}</p><p>{(doggie.temperament) && doggie.temperament.join(', ')}</p>
              <Link to={`/breedDetail/${doggie.id}`}>
              <button>See More!</button>
             </Link>

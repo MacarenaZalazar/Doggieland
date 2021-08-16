@@ -1,5 +1,5 @@
 .dogsContainer{
-
+    font-family: 'Amatic SC', cursive;
     display: grid;
     grid-template-columns: auto auto auto;
     grid-gap: 10px;  
@@ -11,7 +11,7 @@
     background-color: #fff7d5;
     border-radius: 15px;
     padding: 15px 10px;
-    height: 250px;
+    height: 260px;
     margin: 10px 0;
     width: 300px;
 }
@@ -21,8 +21,9 @@
     font-weight: bold;
 }
 .doggieDiv button{
+    font-family: 'Amatic SC', cursive;
     cursor: pointer;
-    font-size: 10px;
+    font-size: 15px;
     text-align: center;
     margin: 5px;
     background: #d4c4b5;
@@ -34,8 +35,18 @@
     border: 1px solid #d4c4b5;
 }
 .doggieDiv button:hover{
+    font-size: 18px;
+    height: 35px;
+    width: 80px;
+    border-radius: 60px;
     background-color: white;
   
+}
+.doggieDiv h3{
+    font-size: 30px;
+}
+.doggieDiv p{
+    font-size: 20px;
 }
 
 .dogImg{

@@ -1,4 +1,5 @@
 .paginationContainer{
+    
     padding: 15px 0;
     width: 100%;
     height: auto;
@@ -7,14 +8,21 @@
     justify-content: center;
 }
 .paginationContainer button{
+    font-size: 15px;
+    font-family: 'Amatic SC', cursive;
     cursor: pointer;
     margin: 0 2px;
-    padding: 5px 5px;
+    padding: 2px 5px;
+    width: 30px;
+    height: 30px;
     box-shadow: transparent;
-    border-radius: 15px;
+    border-radius: 20px;
     border: 1px solid #d4c4b5;
     background-color: #d4c4b5;
 }
 .paginationContainer button:hover{
+    font-size: 18px;
+    width: 40px;
+    height: 40px;
     background-color: white;
 }

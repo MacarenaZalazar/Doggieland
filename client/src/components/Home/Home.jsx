@@ -29,7 +29,7 @@ export default function Home(){
     const idxFirstItem = idxLastItem - itemsPerPage
     const currentITems = breeds && breeds.slice(idxFirstItem, idxLastItem)    
     const totalItems = breeds && breeds.length 
-    const pagesVisited = pageNumber * itemsPerPage 
+    //const pagesVisited = pageNumber * itemsPerPage 
     const pageNumbers = []
     const pageCount = Math.ceil(totalItems/itemsPerPage)
     for(let i = 1; i<= pageCount; i++){
@@ -39,13 +39,14 @@ export default function Home(){
     function paginate(e){
         setPageNumber(Number(e))
     }
+    
 
 
     return (
         <>  
             <div className='homeContainer'>
                 <div className='filterAndPag'>
-                    <Filters temperaments={temperaments} />
+                    <Filters temperaments={temperaments} paginate={paginate}/>
                     <Pagination  pageNumbers={pageNumbers} paginate={paginate} />
                 </div>
                 <Breeds breeds={currentITems} />

@@ -14,18 +14,22 @@ export default function BreedDetail(props) {
     }, [])
    
     return b ? ( 
-        <div>
+        <div className='detailPage'>
             <div className='containerDetail' >
                 <h1>{(b.name) && b.name}</h1>
                 <img  src={b.image}  alt={b.name} />
                 <h3>Height: {b.height} cm</h3> 
                 <h3>Weight: {b.weight} kg</h3> 
                 <h3>Lifespan: {b.life_span.join('-')} years</h3>
-                <h3>Temperaments:{(b.temperament) && b.temperament.join(', ')} </h3>
-        
+                <h3>{ (b.temperament) && <u>Temperaments:</u> } {(b.temperament) &&  b.temperament.join(', ')} </h3>
             </div>
         </div>
     ) : (
-        <p>Loading...</p>
+        <div className='detailPage'>
+            <div className='containerDetail' >
+                <h1>Loading...</h1>
+            </div>
+        </div>
+
     )
 }

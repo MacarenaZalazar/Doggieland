@@ -19,7 +19,7 @@ export function validate(input) {
     if(!containsNumber(input.min_height)) {
       errors.min_height = 'min height is invalid';
     }
-    if(!containsNumber(input.max_height)){
+    if(input.min_height && !containsNumber(input.max_height)){
        errors.max_height = 'max height is invalid';
     }
     if(!input.min_weight && !input.max_weight){

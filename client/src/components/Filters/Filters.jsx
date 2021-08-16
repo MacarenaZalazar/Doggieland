@@ -3,7 +3,8 @@ import { filterByTemp, getBreedsByQuery, orderAZ, filterByOrigin, orderByWeight 
 import { useDispatch } from "react-redux"
 import './Filters.css'
 
-export default function Filters({temperaments}){
+
+export default function Filters({temperaments, paginate}){
     //seteo el useState
     const [input, setInput] = useState('')
     const [selectAZ, setSelectAZ] = useState('Default')
@@ -24,26 +25,31 @@ export default function Filters({temperaments}){
         e.preventDefault()
         dispatch(getBreedsByQuery(input))
         setInput('')
+        paginate(1)
     }
     
     //seteo el estado según orden y hago dispatch del filter
     function handleFilter(e){
         setSelectAZ(e.target.value)
+        paginate(1)
         dispatch(orderAZ(e.target.value))
     }
     
 
     function handleTemps(e){
+        paginate(1)
         setTemps(e.target.value)
         dispatch(filterByTemp(e.target.value))
 
     }
     function handleCreated(e){
+        paginate(1)
         setCreated(e.target.value)
         dispatch(filterByOrigin(e.target.value))
     }
 
     function handleWeight(e){
+        paginate(1)
         setWeight(e.target.value)
         dispatch(orderByWeight(e.target.value))
     }
@@ -95,9 +101,9 @@ export default function Filters({temperaments}){
             </div>
         </div>
         <div className='filterClass'>
-            <p>Search by</p>
+            <span>Search by</span>
             <div className='filterSelect' >
-                <p>Name</p>
+                <span>Name</span>
                 <form onSubmit={handleSubmit}>
                     <input type="text" placeholder='breed...' value={input} onChange={handleChange} />
                     <button type='submit'>Search!</button>

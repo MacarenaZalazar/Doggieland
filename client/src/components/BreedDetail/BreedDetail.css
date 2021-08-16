@@ -1,3 +1,11 @@
+.detailPage{
+    font-family: 'Amatic SC', cursive;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+}
+
 .containerDetail{
     display: inline-block;
     background-color: #fff7d5;
@@ -5,19 +13,19 @@
     padding: 15px 10px;
     height: 300px;
     margin: 10px 0;
-    max-width: 960px;
+    width: 400px;
 }
 .containerDetail h1{
-    font-size: 20px;
+    font-size: 30px;
 }
 .containerDetail img{
     margin: 5px 0;
     border-radius: 10px;
     width: auto;
     max-width: 90%;
-    max-height: 125px;
+    height: 125px;
 }
 .containerDetail h3{
     padding: 3px 0;
-    font-size: 15px;
+    font-size: 20px;
 }
