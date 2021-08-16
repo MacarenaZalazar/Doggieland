@@ -14,7 +14,6 @@ export default function Home(){
     const dispatch = useDispatch()
 
     useEffect(() => {
-        console.log('estoy en useEffect')
         dispatch(getBreeds())
         dispatch(getTemperaments())
     }, [])
@@ -28,7 +27,7 @@ export default function Home(){
     const idxLastItem = pageNumber * itemsPerPage 
     const idxFirstItem = idxLastItem - itemsPerPage
     const currentITems = breeds && breeds.slice(idxFirstItem, idxLastItem)    
-    const totalItems = breeds && breeds.length 
+    const totalItems = typeof breeds !== 'string' && breeds.length 
     //const pagesVisited = pageNumber * itemsPerPage 
     const pageNumbers = []
     const pageCount = Math.ceil(totalItems/itemsPerPage)

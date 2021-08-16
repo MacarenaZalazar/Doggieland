@@ -32,6 +32,10 @@ export function getBreedsByQuery(name){
             dispatch(
                 { type: GET_BREEDS_BY_QUERY, payload: response.data}
             )   
+        }).catch(error => {
+            dispatch({
+                type: GET_BREEDS_BY_QUERY, payload: 'No breeds where found'
+            })
         })
     }
 

@@ -11,9 +11,9 @@ async function getTemperamentsName(){
 
 //traigo los temperamentos según su nombre de la DB
 async function getTemperamentsById(array){
-        let temp = await Temperament.findAll({raw: true, where: { name: {[Op.or]: array } } })
-        temp = temp.map(e => e.id)
-        return temp
+    let temp = await Temperament.findAll({raw: true, where: { name: {[Op.or]: array } } })
+    temp = temp.map(e => e.id)
+    return temp
 }
 
 //busco los temperamentos en la tabla intermedia

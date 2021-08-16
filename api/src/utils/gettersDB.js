@@ -15,8 +15,6 @@ async function getAllSqlDogs() {
             temperament: temperaments
         }
     })
-    console.log(dogs)
-
     return dogs
 }
 
@@ -33,7 +31,6 @@ async function getDogsByPk(pk){
     let dog = await Dog.findByPk(pk)
     dog =  dog.toJSON()
     let temperaments = await getDogTemps(dog.id)
-    console.log(temperaments)
     dog = {
         ...dog, 
         height: infoToArray(dog.height),

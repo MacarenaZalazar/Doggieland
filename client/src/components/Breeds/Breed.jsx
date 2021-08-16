@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 
 export default function Breed(props){
-    const doggie = props.breed
-    //console.log(doggie)
+    const doggie = props.breed   
+    
     return  doggie ? ( 
         <>
                 <h3>{doggie.name}</h3>
@@ -18,6 +18,6 @@ export default function Breed(props){
             </Link>
         </>
 
-    ) : ( null)
+    ) : (null)
 
 }

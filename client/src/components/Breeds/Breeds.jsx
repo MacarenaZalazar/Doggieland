@@ -3,25 +3,34 @@ import Breed from './Breed'
 import './Breeds.css'
 
 export default  function Breeds({breeds}) {
+
     function displayBreeds(data){
-        return data && (
-           data.map((b, idx)=> {
-                return  (
-                    <div key={idx} className='doggieDiv'> 
+        if(typeof data === 'string'){
+            return (
+                <div className='noFound'>
+                    <h3>No breeds where found</h3>
+                </div>
+            )
+        } else {
+            return data && (
+                <div className='dogsContainer'>
+                {data.map((b, idx)=> {
+                    return  (
+                        <div key={idx} className='doggieDiv'> 
                         <Breed key={idx} breed={b}/>
-                    </div>)
-            })
-        )
+                        </div>
+                        )
+                    })}
+                 </div>
+            )
+        }
     }
     
     
 
     return  breeds ? ( 
         <>
-            
-        <div className='dogsContainer'>
             {displayBreeds(breeds)}
-        </div>
         </>
         ) : (
             <p>loading</p>
