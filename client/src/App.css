@@ -62,8 +62,8 @@ table {
 #root{
   display: block;
   height: 100%; 
-  padding-top: 100px;
-  background-color: #dddcdd;
+  margin-top: 100px;
+  background-color: #ffde15;
 }
 .App-header {
   background-color: #282c34;

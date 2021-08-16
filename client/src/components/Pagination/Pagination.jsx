@@ -1,13 +1,8 @@
 import React from 'react'
 import './Pagination.css'
 
-export default function Pagination({itemsPerPage, totalItems, paginate}){
-    const pageNumbers = []
-    const pageCount = Math.ceil(totalItems/itemsPerPage)
-    for(let i = 1; i<= pageCount; i++){
-        pageNumbers.push(i)
-    }
-    //cambio la página
+export default function Pagination({paginate, pageNumbers}){
+
     return (
         <div className='paginationContainer'>
            <ul className='paginationUl' >

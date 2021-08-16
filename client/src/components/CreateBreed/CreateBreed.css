@@ -1,9 +1,106 @@
+.bodyForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 .createForm{
+    background-color: #fef8d5;
+    padding: 10px;
+    margin: 50px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    border-radius: 15px;
+ 
 }
+.bodyForm button{
+    margin: 0 2px;
+    padding: 5px 5px;
+    box-shadow: transparent;
+    border-radius: 15px;
+    border: 1px solid #d4c4b5;
+    background-color: #d4c4b5;
+
+}
+.bodyForm button:hover{
+    background-color: white;
+}
+.bodyForm button:disabled{
+    background-color: #d4c4b5 ;
+}
+span{
+    font-size: 15px;
+}
+
 input.danger{
     border: 2px solid red;
+}
+
+.divCreateForm{
+    padding: 5px;    
+}
+
+.divCreateForm label{
+    padding: 0 5px;
+    font-size: 15px;
+}
+
+.divCreateForm input{
+    padding: 0 5px;
+    width: 20px;
+}
+
+.buttonDiv{
+
+    display:flex;
+    justify-content: end;
+}
+
+.divCreateSelect{
+    padding: 5px;
+}
+
+.divCreateSelect label{
+    padding: 0 5px;
+    font-size: 15px;
+}
+.divCreateName{
+
+    padding: 5px;  
+}
+.divCreateName label{
+    padding: 0 5px;
+    font-size: 15px;
+}
+.temperaments{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 250px;
+}
+.temperaments span{
+    padding: 3px;
+    font-size: 13px;
+}
+
+.temperaments button{
+    text-align: center;
+    font-size: 8px;
+    padding: 0;
+    width: 10px;
+ 
+}
+.errors{
+    font-size: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+.errors p{
+    padding: 3px
 }

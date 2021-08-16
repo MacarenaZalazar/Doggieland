@@ -3,13 +3,16 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #dddcdd url('https://media-cldnry.s-nbcnews.com/image/upload/t_fit-560w,f_auto,q_auto:best/newscms/2020_28/1587661/dogs-age-years-kb-inline-200707.jpg') no-repeat center bottom;
+    /* background: #dddcdd url('https://media-cldnry.s-nbcnews.com/image/upload/t_fit-560w,f_auto,q_auto:best/newscms/2020_28/1587661/dogs-age-years-kb-inline-200707.jpg') no-repeat center bottom; */
+    background-color: #ffde15 ;
+    background-image: url('https://cdn.pixabay.com/photo/2021/01/23/07/53/dogs-5941898_960_720.jpg')  ;
     height: 100%;
 }
 .ladingDiv a{
     display: block;
 }
 .ladingDiv h1{
+    font-family: 'WindSong', cursive;;
     font-size: 30px;
     margin-bottom: 10px;
 }

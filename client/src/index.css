@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=WindSong:wght@500&display=swap');
+
 body {
   display: block;
   height: 100%;
@@ -16,5 +18,5 @@ code {
 html{
   display: block;
   height: 100%; 
-  background-color:#dddcdd ;
+  background-color:#ffde15 ;
 }

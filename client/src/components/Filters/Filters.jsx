@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import { filterByTemp, getBreedsByQuery, orderAZ, filterByOrigin, orderByWeight } from '../../actions/index'
 import { useDispatch } from "react-redux"
+import './Filters.css'
 
 export default function Filters({temperaments}){
     //seteo el useState
@@ -27,7 +28,6 @@ export default function Filters({temperaments}){
     
     //seteo el estado según orden y hago dispatch del filter
     function handleFilter(e){
-        console.log(e.target.value)
         setSelectAZ(e.target.value)
         dispatch(orderAZ(e.target.value))
     }
@@ -52,46 +52,57 @@ export default function Filters({temperaments}){
 
     return (
         <div className='filterContainer'>
-        <span>Order by</span>
-        <div>
-            <span>A-Z</span>
-            <select value={selectAZ} onChange={handleFilter}>
-                <option value="A-Z">A-Z</option>
-                <option value="Z-A">Z-A</option>
-            </select>
+            <div className='filterClass'> 
+                <span>Order by</span>
+                <div className='otroDivContainer'>
+                    <div className='filterSelect'>
+                        <span>A-Z</span>
+                        <select value={selectAZ} onChange={handleFilter}>
+                            <option value="A-Z">A-Z</option>
+                            <option value="Z-A">Z-A</option>
+                        </select>
+                    </div>
+                    <div className='filterSelect'>
+                        <span>Weight</span>
+                        <select onChange={handleWeight} value={weight}>
+                            <option value="Default">Default</option>
+                            <option value="Asc">Asc</option>
+                            <option value="Desc">Desc</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        <div className='filterClass'>
+            <span>Filter by </span>
+            <div className='otroDivContainer'>
+                <div className='filterSelect'>
+                    <span>Temperament</span>
+                    <select value={temps} onChange={handleTemps}>
+                        <option value="All">All</option>
+                        {temperaments.map((t, idx) => {
+                            return <option key={idx} value={t}>{t}</option>
+                        })}
+                    </select>
+                </div >
+                <div className='filterSelect'>
+                    <span>Created by</span>
+                    <select onChange={handleCreated} value={created}>
+                        <option value="All">All</option>
+                        <option value="Api">Api</option>
+                        <option value="User">User</option>
+                    </select>
+                </div>
+            </div>
         </div>
-        <div>
-        <span>Weight</span>
-            <select onChange={handleWeight} value={weight}>
-                <option value="Default">Default</option>
-                <option value="Asc">Asc</option>
-                <option value="Desc">Desc</option>
-            </select>
-        </div>
-        <span>Filter by </span>
-        <div>
-            <span>Temperament</span>
-            <select value={temps} onChange={handleTemps}>
-                <option value="All">All</option>
-                {temperaments.map((t, idx) => {
-                    return <option key={idx} value={t}>{t}</option>
-                })}
-            </select>
-        </div>
-        <div>
-        <span>Created by</span>
-        <select onChange={handleCreated} value={created}>
-            <option value="All">All</option>
-            <option value="Api">Api</option>
-            <option value="User">User</option>
-        </select>
-        </div>
-        <div>
-        <p>Search by name</p>
-        <form onSubmit={handleSubmit}>
-            <input type="text" placeholder='breed...' value={input} onChange={handleChange} />
-            <button type='submit'>Search!</button>
-        </form>
+        <div className='filterClass'>
+            <p>Search by</p>
+            <div className='filterSelect' >
+                <p>Name</p>
+                <form onSubmit={handleSubmit}>
+                    <input type="text" placeholder='breed...' value={input} onChange={handleChange} />
+                    <button type='submit'>Search!</button>
+                </form>
+            </div>
         </div>
     </div>
     )

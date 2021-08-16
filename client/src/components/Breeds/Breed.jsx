@@ -8,12 +8,14 @@ export default function Breed(props){
     //console.log(doggie)
     return  doggie ? ( 
         <>
-            <Link to={`/breedDetail/${doggie.id}`}>
                 <h3>{doggie.name}</h3>
-            </Link>{
+            {
                 doggie.image ? <img className='dogImg' src={doggie.image} alt={doggie.name}/> : <p><loading className=""></loading></p>
             }
-             <p>{(doggie.temperament) && doggie.temperament.join(', ')}</p>
+             <p>{(doggie.temperament) && 'Temperament: '+doggie.temperament.join(', ')}</p>
+             <Link to={`/breedDetail/${doggie.id}`}>
+             <button>See More!</button>
+            </Link>
         </>
 
     ) : ( null)
