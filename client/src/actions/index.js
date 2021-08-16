@@ -1,6 +1,9 @@
 import axios from 'axios'
 import { BACKEND, GET_BREEDS, GET_BREEDS_BY_QUERY, GET_BREEDS_BY_ID, POST_BREED, DOG_ORDER_BY_AZ, DOG_FILTER_BY_ORIGIN, DOG_FILTER_BY_TEMPERAMENT, GET_TEMPERAMENTS, DOG_ORDER_BY_WEIGHT } from '../utils/utils'
 
+export function clearIdBreed(){
+    return {type :'CLEAR'}
+}
 
 export function getBreeds(){
     return function(dispatch){

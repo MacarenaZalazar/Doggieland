@@ -28,8 +28,8 @@ function mapping(doggies){
         return { 
             id: e.id, 
             name: e.name, 
-            height: e.height.metric,//infoToArray(e.height.metric), 
-            weight: e.weight.metric,//infoToArray(e.weight.metric), 
+            height: infoToArray(e.height.metric), 
+            weight: infoToArray(e.weight.metric), 
             life_span: lifespanToArray(e.life_span),
             image:e.image.url,
             temperament: tempToArray(e.temperament)

@@ -4,6 +4,11 @@ const initialState = { allBreeds:[], breeds: [], breedId: [], temperaments:[]}
 
   function rootReducer(state = initialState, action) {
     switch (action.type) {
+      case 'CLEAR':
+        return {
+          ...state, 
+          breedId: []
+        }
       case GET_BREEDS:
         return {
           ...state,

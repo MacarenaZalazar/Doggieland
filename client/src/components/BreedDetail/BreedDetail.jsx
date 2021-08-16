@@ -1,7 +1,8 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getBreedsById } from '../../actions';
+import { clearIdBreed, getBreedsById } from '../../actions';
+import { Link } from 'react-router-dom';
 import './BreedDetail.css'
 
 export default function BreedDetail(props) {
@@ -13,15 +14,22 @@ export default function BreedDetail(props) {
         dispatch(getBreedsById(id))
     }, [])
    
+    function handleClick(e){
+        dispatch(clearIdBreed())
+    }   
+
     return b ? ( 
         <div className='detailPage'>
             <div className='containerDetail' >
                 <h1>{(b.name) && b.name}</h1>
                 <img  src={b.image}  alt={b.name} />
-                <h3>Height: {b.height} cm</h3> 
-                <h3>Weight: {b.weight} kg</h3> 
-                <h3>Lifespan: {b.life_span.join('-')} years</h3>
+                <h3>Height: {b.height.join(' to ')} cm</h3> 
+                <h3>Weight: {b.weight.join(' to ')} kg</h3> 
+                <h3>Lifespan: {b.life_span.join(' to ')} years</h3>
                 <h3>{ (b.temperament) && <u>Temperaments:</u> } {(b.temperament) &&  b.temperament.join(', ')} </h3>
+                <Link to='/home'>
+                    <button onClick={handleClick}>Go Back!</button>
+                </Link>
             </div>
         </div>
     ) : (
