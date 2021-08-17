@@ -7,8 +7,6 @@ import { clearIdBreed } from '../../actions';
 
 export default function NavBar() {
     const {breeds} = useSelector(state=> state)
-    console.log(breeds)
-    console.log(breeds.length)
     const dispatch = useDispatch()
     function handleClick(e){
         dispatch(clearIdBreed())
