@@ -28,7 +28,7 @@ router.get('/:idRaza', async (req, res, next) => {
     let dog
     try {
         dog = await getBreedById(idRaza)
-        if(dog){
+        if(dog.length>0){
             res.send(dog)
         } else {
             res.status(400).send("There's no id that matches")

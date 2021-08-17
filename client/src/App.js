@@ -1,5 +1,5 @@
 import './App.css';
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import BreedDetail from './components/BreedDetail/BreedDetail';
 import NavBar from './components/NavBar/NavBar';
 import CreateBreed from './components/CreateBreed/CreateBreed'
@@ -15,13 +15,15 @@ function App() {
       <Route exact path= '/'>
         <LandingPage />
       </Route>
-      <Route exact path='/home'>
+      <Switch>
+      <Route exact path='/doggieland'>
         <Home/>
       </Route>
-        <Route path='/breedDetail/:id' component={BreedDetail}/>
-        <Route path='/create'>
+        <Route exact path='/doggieland/create'>
           <CreateBreed/>
         </Route>
+        <Route path='/doggieland/:id' component={BreedDetail}/>
+      </Switch>
     </div>
   );
 }

@@ -55,7 +55,7 @@ export function postNewBreed(dog){
     return function(dispatch){
         return  axios.post(`${BACKEND}/dog`, dog).then(response => {
             dispatch(
-                {type: POST_BREED, payload: response.data}
+                {type: GET_BREEDS_BY_ID, payload: response.data}
             )   
         })
     }  

@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 60px;
+    padding: 100px;
 }
 .containerDetail button{
     font-family: 'Amatic SC', cursive;
@@ -28,11 +28,15 @@
     background-color: white;
 }
 .containerDetail{
-    display: inline-block;
+    border: 1px solid #7D732F;;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
     background-color: #fff7d5;
     border-radius: 15px;
     padding: 15px 10px;
-    height: 300px;
+    height: 400px;
     margin: 10px 0;
     width: 400px;
 }
@@ -44,7 +48,7 @@
     border-radius: 10px;
     width: auto;
     max-width: 90%;
-    height: 125px;
+    max-height: 125px;
 }
 .containerDetail h3{
     padding: 3px 0;

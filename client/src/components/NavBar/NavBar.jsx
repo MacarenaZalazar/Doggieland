@@ -1,23 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { clearIdBreed } from '../../actions';
 
 
 export default function NavBar() {
+    const {breeds} = useSelector(state=> state)
+    console.log(breeds)
+    console.log(breeds.length)
     const dispatch = useDispatch()
     function handleClick(e){
         dispatch(clearIdBreed())
     }
     return (
-        <>
+        breeds.length > 0 && <> 
         <div className='nav-container'>
-            <Link to='/home'>
+            <Link to='/doggieland'>
             <h1 onClick={handleClick} className='buttonNav'>Home</h1>
             </Link>
-            <Link to='/create'>
-            <h1 className='buttonNav'>Create</h1>
+            <h1>Doggieland</h1>
+            <Link to='/doggieland/create'>
+            <h1 onClick={handleClick} className='buttonNav'>Create</h1>
             </Link>
         </div>
         </>

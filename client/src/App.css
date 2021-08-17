@@ -62,7 +62,6 @@ table {
 #root{
   display: block;
   height: 100%; 
-  margin-top: 65px;
   background-color: #ffde15;
 }
 .App-header {

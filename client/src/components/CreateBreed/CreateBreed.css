@@ -1,6 +1,6 @@
 .bodyForm{
     font-family: 'Amatic SC', cursive;
-    padding: 50px;
+    padding: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -118,4 +118,25 @@ input.danger{
 }
 .errors p{
     padding: 3px
+}
+#newBreedBttn{
+    font-size: 20px;
+    height: 40px;
+    width: 120px;
+
+}
+#newBreedBttn:hover{
+    font-size: 25px;
+    height: 50px;
+    width: 140px;
+
+}
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: max-content;
+}
+.title h3{
+    margin: 0 10px
 }

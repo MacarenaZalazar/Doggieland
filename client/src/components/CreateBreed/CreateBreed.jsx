@@ -4,20 +4,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTemperaments, postNewBreed } from '../../actions';
 import { validate } from './utils';
 import './CreateBreed.css'
+import { Link } from 'react-router-dom';
 
 
 export default function CreateBreed() {
+
     const [input, setInput] = useState({})
     const [flag, setFlag] = useState(true)
     const [temps, setTemps] = useState([])   
     const [errors, setErrors] = useState({})
-    const state = useSelector(state => state)
+
+    const {temperaments, breedId} = useSelector(state => state)
+   console.log(breedId)
+
     const dispatch = useDispatch()
+    
     useEffect(() => {
+        window.scrollTo(0, 0)
         dispatch(getTemperaments())
     },[])
 
-    console.log(flag)
     function handleChange(e){
         e.preventDefault()
         setFlag(false)
@@ -26,7 +32,7 @@ export default function CreateBreed() {
             ...input,
             [name]:value
         })
-        console.log(input)
+
         setErrors(validate({
             ...input,
             [e.target.name]: e.target.value
@@ -47,8 +53,6 @@ export default function CreateBreed() {
 
     }
 
-    console.log(input.name)
-
 
     function handleSubmit(e){
         e.preventDefault()
@@ -64,17 +68,26 @@ export default function CreateBreed() {
         dispatch(postNewBreed(newDog))
     }
 
-    console.log(flag)
+
     function handleClick(e){
         e.preventDefault()
         setTemps(temps.filter(t => t !== e.target.value))
     }
 
+    function onNewClick(e){
+        e.preventDefault()
+    }
 
     return (
         <>
         <div className='bodyForm'>
+            <div className='title'>
+
             <h3>Create you own Breed!</h3>
+            <Link to='/doggieland'>
+                <button>Go back!</button>
+            </Link>
+            </div>
             <form className='createForm' onSubmit={handleSubmit}>
                 <div className='divCreateName'>
                 <label >Name</label>
@@ -143,7 +156,7 @@ export default function CreateBreed() {
                 <label >Temperament</label>
                 <select name="temperaments" onChange={handleTemps}  type="text" >
                 <option value={null}></option>
-                {state.temperaments.map((e, idx)=>{
+                {temperaments.map((e, idx)=>{
                     return (
                         <option key={idx} value={e}>{e}</option>
                         )
@@ -165,6 +178,11 @@ export default function CreateBreed() {
                     <button  disabled={(actualErrors.length>0) || flag === true}>Add Breed</button>
         
             </form>
+            {breedId.length>0 && (
+                <Link to={`/doggieland/${breedId[0].id}`}>
+                    <button onChange={onNewClick} id='newBreedBttn'>See your breed!</button>
+                </Link>
+            ) }
         </div>
         </>
     )

@@ -3,7 +3,7 @@ import Breed from './Breed'
 import './Breeds.css'
 
 export default  function Breeds({breeds}) {
-
+    console.log(typeof breeds)
     function displayBreeds(data){
         if(typeof data === 'string'){
             return (
@@ -29,8 +29,10 @@ export default  function Breeds({breeds}) {
     
 
     return  breeds ? ( 
-        <>
+        <>  
+        <div id='marginTop'>
             {displayBreeds(breeds)}
+        </div>
         </>
         ) : (
             <p>loading</p>

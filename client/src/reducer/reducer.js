@@ -68,13 +68,22 @@ const initialState = { allBreeds:[], breeds: [], breedId: [], temperaments:[]}
         if(action.payload === 'Api'){
           return{
             ...state,
-            breeds: state.allBreeds.filter(e => typeof e.id === 'number'  )
+            breeds: (typeof state.breeds !== 'string') && state.breeds.filter(e => typeof e.id === 'number'  )
           }
         } else if(action.payload === 'User') {
-          return {
+          const dogsDB = {
             ...state,
-            breeds: state.allBreeds.filter(e =>  e.id.length>10 )
+            breeds: (typeof state.breeds !== 'string') && state.breeds.filter(e =>  e.id.length>10 )
           }
+          if(dogsDB.breeds.length>0){
+            return dogsDB
+          } else {
+            return {
+              ...state,
+              breeds: 'empty'
+            }
+          }
+          return 
         } else {
           return{
             ...state,

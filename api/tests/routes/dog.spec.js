@@ -7,9 +7,14 @@ const { Dog, conn } = require('../../src/db.js');
 const agent = session(app);
 const dog = {
   name: 'Pug',
+  height: "60-85", 
+  weight: "20 - 30", 
+  life_span : "10 - 15",
+  image: "https://www.thesprucepets.com/thmb/kV_cfc9P4QWe-klxZ8y--awxvY4=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/adorable-white-pomeranian-puppy-spitz-921029690-5c8be25d46e0fb000172effe.jpg",
+  temperament: ["Active"]
 };
 
-describe('Videogame routes', () => {
+describe('Dogs routes', () => {
   before(() => conn.authenticate()
   .catch((err) => {
     console.error('Unable to connect to the database:', err);
@@ -22,3 +27,73 @@ describe('Videogame routes', () => {
     );
   });
 });
+
+describe('Dogs routes', () => {
+  beforeEach(() => Dog.sync({ force: true }));
+  describe('GET /dogs', () => {
+    it('should get 200', () =>
+      agent.get('/dogs/45').expect(200)
+      .expect('Content-Type', /json/)
+    );
+  });
+});
+
+describe('GET /dogs/6854', () => {
+  it('should get 400', () =>
+  agent.get('/dogs/6854').expect(400));
+  });
+
+
+describe('GET /dogs/?name=golden', () => {
+it('should get 200', () =>
+agent.get('/dogs/?name=golden').expect(200)
+.expect('Content-Type', /json/))
+});
+
+
+
+describe('Dog routes', () => {
+  beforeEach(() => Dog.sync({ force: true }));
+  describe('POST /dog', () => {
+    it('should get 200', () =>
+      agent.post('/dog').send(dog)
+      .expect(200)
+      .expect('Content-Type', /json/)
+    );
+  });
+});
+
+const temperaments = [
+  "Active", "Adaptable", "Adventurous", "Affectionate", "Aggressive", "Agile", "Alert",
+  "Aloof", "Amiable", "Assertive", "Athletic", "Attentive", "Benevolent", "Boisterous",
+  "Bold", "Brave", "Bossy", "Bubbly", "Bright", "Calm", "Cat-like", "Cautious", "Charming", 
+  "Cheerful", "Clever", "Clownish",  "Companionable", "Composed",  "Confident", "Cooperative", "Courageous", "Cunning",
+  "Curious", "Determined", "Devoted", "Dignified", "Diligent", "Docile", "Dominant",
+  "Dutiful", "Energetic", "Even Tempered", "Excitable", "Eager", "Easygoing",
+  "Extroverted", "Faithful", "Familial", "Fast", "Fearless", "Feisty", "Fierce",
+  "Friendly", "Fun-loving", "Gay", "Generous", "Gentle", "Good-natured",
+  "Good-tempered", "Great-hearted", "Happy", "Hard-working", "Hardworking", "Hardy",
+  "Independent", "Inquisitive", "Intelligent", "Joyful", "Keen", "Kind",
+  "Lively", "Lovable", "Loving", "Loyal", "Merry","Mischievous", "Obedient", "Opinionated",
+  "Outgoing", "Patient", "People-Oriented", "Playful", "Powerful", "Protective", "Proud",
+  "Quick", "Quiet", "Rational", "Receptive", "Refined", "Reliable", "Reserved", "Respectful",
+  "Responsible", "Responsive", "Rugged", "Self-assured", "Self-confidence",
+  "Self-important", "Sensitive", "Sociable", "Spirited", "Spunky", "Stable",
+  "Steady", "Strong", "Strong Willed", "Stubborn", "Sturdy", "Suspicious", "Sweet-Tempered",  "Tenacious",
+  "Territorial",  "Thoughtful",  "Tolerant", "Trainable", "Trusting",  "Trustworthy",
+  "Unflappable",  "Vigilant",  "Vocal",  "Watchful",  "Wild",  "Willful"
+]
+
+describe('Temperament routes', () => {
+  beforeEach(() => Dog.sync({ force: true }));
+  describe('GET /temperament', () => {
+    it('should get 200', () =>
+      agent.get('/temperament')
+      .expect(200)
+      .expect('Content-Type', /json/)
+    );
+  });
+});
+
+
+

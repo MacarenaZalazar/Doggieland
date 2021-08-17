@@ -1,23 +1,22 @@
 .ladingDiv{
-    margin-top: 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     background: #ffde15 url('https://cdn.pixabay.com/photo/2021/01/23/07/53/dogs-5941898_960_720.jpg') no-repeat center; 
-    height: 105%;
+    background-size: contain;
+    height: 100%;
 }
 .ladingDiv a{
     display: block;
 }
 .ladingDiv h1{
     font-family: 'Amatic SC', cursive;
-    font-size: 30px;
+    font-size: 40px;
     margin-bottom: 10px;
 }
 .ladingDiv span{
-    /*font-family: 'WindSong', cursive;*/
-    font-size: 40px;
+    font-size: 50px;
 }
 .ladingDiv button{
     cursor: pointer;

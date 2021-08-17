@@ -9,8 +9,10 @@ export default function BreedDetail(props) {
     let id = props.match.params.id
     const dispatch = useDispatch()
     const b = useSelector(state => state.breedId[0])
+    console.log()
     
     useEffect(() => {
+        window.scrollTo(0, 0)
         dispatch(getBreedsById(id))
     }, [])
    
@@ -26,8 +28,8 @@ export default function BreedDetail(props) {
                 <h3>Height: {b.height.join(' to ')} cm</h3> 
                 <h3>Weight: {b.weight.join(' to ')} kg</h3> 
                 <h3>Lifespan: {b.life_span.join(' to ')} years</h3>
-                <h3>{ (b.temperament) && <u>Temperaments:</u> } {(b.temperament) &&  b.temperament.join(', ')} </h3>
-                <Link to='/home'>
+                <h3>{ (b.temperament) && <u>Temperament:</u> } {(b.temperament) &&  b.temperament.join(', ')} </h3>
+                <Link to='/doggieland'>
                     <button onClick={handleClick}>Go Back!</button>
                 </Link>
             </div>

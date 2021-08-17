@@ -14,14 +14,13 @@ export default function Home(){
     const dispatch = useDispatch()
 
     useEffect(() => {
+        window.scrollTo(0, 0)
         dispatch(getBreeds())
         dispatch(getTemperaments())
     }, [])
 
-    const state = useSelector(state => state)
-    const {breeds, temperaments} = state
-
-  
+    const {breeds, temperaments} = useSelector(state => state)
+    
     const [pageNumber, setPageNumber] = useState(1)
     const itemsPerPage = 9
     const idxLastItem = pageNumber * itemsPerPage 
@@ -36,20 +35,24 @@ export default function Home(){
     }
 
     function paginate(e){
+        window.scrollTo(0, 0)
         setPageNumber(Number(e))
     }
     
 
 
     return (
-        <>  
-            <div className='homeContainer'>
+        <div className='homeContainer'>
+          { breeds.length > 0 || (typeof breeds === 'string') ?  
+            <>  
                 <div className='filterAndPag'>
                     <Filters temperaments={temperaments} paginate={paginate}/>
                     <Pagination  pageNumbers={pageNumbers} paginate={paginate} />
                 </div>
                 <Breeds breeds={currentITems} />
+             </> : (<h1 id='loading'>Loading...</h1>)}
             </div>
-        </>
-    )
+
+        )
+    
 }
