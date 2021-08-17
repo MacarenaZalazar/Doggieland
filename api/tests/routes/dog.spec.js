@@ -46,7 +46,9 @@ describe('GET /dogs/6854', () => {
 
 describe('GET /dogs/?name=golden', () => {
 it('should get 200', () =>
-agent.get('/dogs/?name=golden').expect(200)
+agent.get('/dogs/?name=golden')
+
+.expect(200)
 .expect('Content-Type', /json/))
 });
 
@@ -55,34 +57,14 @@ agent.get('/dogs/?name=golden').expect(200)
 describe('Dog routes', () => {
   beforeEach(() => Dog.sync({ force: true }));
   describe('POST /dog', () => {
-    it('should get 200', () =>
-      agent.post('/dog').send(dog)
+    it('should get 200', async () =>
+      await agent.post('/dog').send(dog)
       .expect(200)
       .expect('Content-Type', /json/)
     );
   });
 });
 
-const temperaments = [
-  "Active", "Adaptable", "Adventurous", "Affectionate", "Aggressive", "Agile", "Alert",
-  "Aloof", "Amiable", "Assertive", "Athletic", "Attentive", "Benevolent", "Boisterous",
-  "Bold", "Brave", "Bossy", "Bubbly", "Bright", "Calm", "Cat-like", "Cautious", "Charming", 
-  "Cheerful", "Clever", "Clownish",  "Companionable", "Composed",  "Confident", "Cooperative", "Courageous", "Cunning",
-  "Curious", "Determined", "Devoted", "Dignified", "Diligent", "Docile", "Dominant",
-  "Dutiful", "Energetic", "Even Tempered", "Excitable", "Eager", "Easygoing",
-  "Extroverted", "Faithful", "Familial", "Fast", "Fearless", "Feisty", "Fierce",
-  "Friendly", "Fun-loving", "Gay", "Generous", "Gentle", "Good-natured",
-  "Good-tempered", "Great-hearted", "Happy", "Hard-working", "Hardworking", "Hardy",
-  "Independent", "Inquisitive", "Intelligent", "Joyful", "Keen", "Kind",
-  "Lively", "Lovable", "Loving", "Loyal", "Merry","Mischievous", "Obedient", "Opinionated",
-  "Outgoing", "Patient", "People-Oriented", "Playful", "Powerful", "Protective", "Proud",
-  "Quick", "Quiet", "Rational", "Receptive", "Refined", "Reliable", "Reserved", "Respectful",
-  "Responsible", "Responsive", "Rugged", "Self-assured", "Self-confidence",
-  "Self-important", "Sensitive", "Sociable", "Spirited", "Spunky", "Stable",
-  "Steady", "Strong", "Strong Willed", "Stubborn", "Sturdy", "Suspicious", "Sweet-Tempered",  "Tenacious",
-  "Territorial",  "Thoughtful",  "Tolerant", "Trainable", "Trusting",  "Trustworthy",
-  "Unflappable",  "Vigilant",  "Vocal",  "Watchful",  "Wild",  "Willful"
-]
 
 describe('Temperament routes', () => {
   beforeEach(() => Dog.sync({ force: true }));

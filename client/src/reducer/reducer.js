@@ -83,7 +83,6 @@ const initialState = { allBreeds:[], breeds: [], breedId: [], temperaments:[]}
               breeds: 'empty'
             }
           }
-          return 
         } else {
           return{
             ...state,

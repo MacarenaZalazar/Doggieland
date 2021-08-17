@@ -8,14 +8,24 @@ import { Link } from 'react-router-dom';
 
 
 export default function CreateBreed() {
+    const newDog = {
+        name: '', 
+        min_height: '',
+        max_height: '',
+        min_weight: '',
+        max_weight: '',
+        min_life_span:'',
+        max_life_span: '',
+        image: ''
+    }
 
-    const [input, setInput] = useState({})
+    const [input, setInput] = useState(newDog)
     const [flag, setFlag] = useState(true)
     const [temps, setTemps] = useState([])   
     const [errors, setErrors] = useState({})
-
+    
     const {temperaments, breedId} = useSelector(state => state)
-   console.log(breedId)
+    
 
     const dispatch = useDispatch()
     
@@ -57,7 +67,7 @@ export default function CreateBreed() {
     function handleSubmit(e){
         e.preventDefault()
 
-        const newDog= {
+        const doggie= {
             name: input.name,
             height: `${input.min_height} - ${input.max_height}`,
             weight: `${input.min_weight} - ${input.max_weight}`,
@@ -65,7 +75,10 @@ export default function CreateBreed() {
             image: input.image,
             temperament: temps
         }
-        dispatch(postNewBreed(newDog))
+        dispatch(postNewBreed(doggie))
+        setInput(newDog)
+        setTemps([])
+        setFlag(true)
     }
 
 
@@ -167,10 +180,10 @@ export default function CreateBreed() {
 
                     { temps.map((e, idx) =>{
                         return ( 
-                            <>
-                                <span key={idx}>{e}</span>
+                            <React.Fragment key={idx}>
+                                <span >{e}</span>
                                 <button value={e} onClick={handleClick}>X</button>
-                            </>
+                            </React.Fragment>
                             )
                         })    
                     }
