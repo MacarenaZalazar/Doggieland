@@ -3,17 +3,17 @@ import { Link } from 'react-router-dom';
 
 
 
-export default function Breed(props){
-    const doggie = props.breed   
+export default function Breed({breed}){
     
-    return  doggie ? ( 
+    
+    return  breed ? ( 
         <>
-                <h3>{doggie.name}</h3>
+                <h3>{breed.name}</h3>
             {
-                doggie.image ? <img className='dogImg' src={doggie.image} alt={doggie.name}/> : <p><loading className=""></loading></p>
+                breed.image ? <img className='dogImg' src={breed.image} alt={breed.name}/> : <p><loading className=""></loading></p>
             }
-             <p>{(doggie.temperament) && <u>Temperament:</u>}</p><p>{(doggie.temperament) && doggie.temperament.join(', ')}</p>
-             <Link to={`/doggieland/${doggie.id}`}>
+             <p>{(breed.temperament>0) && <u>Temperament:</u>}</p><p>{(breed.temperament) && breed.temperament.join(', ')}</p>
+             <Link to={`/doggieland/${breed.id}`}>
              <button>See More!</button>
             </Link>
         </>

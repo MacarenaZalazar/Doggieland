@@ -65,30 +65,32 @@ const initialState = { allBreeds:[], breeds: [], breedId: [], temperaments:[]}
           }
         }
       case DOG_FILTER_BY_ORIGIN:
+        let dogs
         if(action.payload === 'Api'){
-          return{
+          dogs = {
             ...state,
             breeds: (typeof state.breeds !== 'string') && state.breeds.filter(e => typeof e.id === 'number'  )
           }
         } else if(action.payload === 'User') {
-          const dogsDB = {
+           dogs = {
             ...state,
             breeds: (typeof state.breeds !== 'string') && state.breeds.filter(e =>  e.id.length>10 )
           }
-          if(dogsDB.breeds.length>0){
-            return dogsDB
-          } else {
-            return {
-              ...state,
-              breeds: 'empty'
-            }
-          }
         } else {
-          return{
+          dogs = {
             ...state,
             breeds: state.allBreeds
           }
         }
+
+       if(dogs.breeds.length>0){
+            return dogs
+      } else {
+        return {
+              ...state,
+             breeds: 'empty'
+       }
+      }
       case DOG_ORDER_BY_WEIGHT:
         if(action.payload === 'Asc'){
           return{

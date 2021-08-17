@@ -3,7 +3,8 @@ import Breed from './Breed'
 import './Breeds.css'
 
 export default  function Breeds({breeds}) {
-    console.log(typeof breeds)
+    console.log(breeds)
+    
     function displayBreeds(data){
         if(typeof data === 'string'){
             return (

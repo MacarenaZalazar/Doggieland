@@ -27,11 +27,11 @@ async function getBreedById(id){
 }
 
 async function postBreed(name, height, weight, life_span, image, temperament){
-    const temperamentId =  await getTemperamentsById(temperament)
+    const temperamentId =  temperament.length > 0 && await getTemperamentsById(temperament)
     let newDog = await Dog.create({
         name, height, weight, life_span, image
     })
-    await newDog.setTemperaments(temperamentId)
+    temperamentId && await newDog.setTemperaments(temperamentId)
     newDog = await getBreedById(newDog.id)
     return newDog
 }

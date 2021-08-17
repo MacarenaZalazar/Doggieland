@@ -19,6 +19,7 @@ async function getAllSqlDogs() {
             height: infoToArray(e.height),
             weight: infoToArray(e.weight),
             life_span: lifespanToArray(e.life_span), 
+            image: e.image,
             temperament: e.temperaments.map(t => t.name)
         }
     })
@@ -60,7 +61,6 @@ async function getDogsByPk(pk){
         },
       },})
 
-    console.log(dog)
     dog = {
         id: dog.id,
         name: dog.name, 
