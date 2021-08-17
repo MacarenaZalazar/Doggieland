@@ -48,22 +48,31 @@ const initialState = { allBreeds:[], breeds: [], breedId: [], temperaments:[]}
             temperaments : action.payload
           }
       case DOG_FILTER_BY_TEMPERAMENT:
-        console.log(action.payload)
+        let doggies 
         if(action.payload ==='All'){
-          return{
+          doggies = {
             ...state,
             breeds: [...state.allBreeds]
           }
         } else {
-          return{
+          console.log(state.breeds)
+          doggies = {
             ...state,
-            breeds: state.allBreeds.filter(e => {
+            breeds:  Array.isArray(state.breeds) && state.breeds.filter(e => {
               return e.temperament &&  e.temperament.includes(action.payload)
 
               }
-            )
+            ) 
           }
         }
+        if(doggies.breeds.length>0){
+          return doggies
+      } else {
+      return {
+            ...state,
+           breeds: 'empty'
+       }
+      }
       case DOG_FILTER_BY_ORIGIN:
         let dogs
         if(action.payload === 'Api'){

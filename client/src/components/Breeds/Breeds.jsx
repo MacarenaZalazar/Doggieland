@@ -1,15 +1,25 @@
-import React, { useState }  from 'react'
+import React from 'react'
 import Breed from './Breed'
 import './Breeds.css'
+import { useDispatch } from 'react-redux';
+import { getBreeds } from '../../actions';
+
 
 export default  function Breeds({breeds}) {
-    console.log(breeds)
-    
+    const dispatch = useDispatch()
+  
+    function handleClick(e){
+        e.preventDefault()
+        dispatch(getBreeds())
+
+    }
+
     function displayBreeds(data){
         if(typeof data === 'string'){
             return (
                 <div className='noFound'>
                     <h3>No breeds where found</h3>
+                    <button onClick={handleClick}>See All</button>
                 </div>
             )
         } else {
