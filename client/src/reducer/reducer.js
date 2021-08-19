@@ -29,12 +29,12 @@ const initialState = { allBreeds:[], breeds: [], breedId: [], temperaments:[]}
         if(action.payload === 'A-Z'){
           return {
             ...state, 
-            breeds:[...state.breeds].sort((a,b) =>  a.name.localeCompare(b.name))
+            breeds:[...state.breeds].sort((a,b) =>  a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
           }
         } else if(action.payload === 'Z-A'){
           return {
             ...state, 
-            breeds: [...state.breeds].sort((a,b) => b.name.localeCompare(a.name)) 
+            breeds: [...state.breeds].sort((a,b) => b.name.toLowerCase().localeCompare(a.name.toLowerCase())) 
           } 
          } else {
             return {
@@ -58,7 +58,7 @@ const initialState = { allBreeds:[], breeds: [], breedId: [], temperaments:[]}
           console.log(state.breeds)
           doggies = {
             ...state,
-            breeds:  Array.isArray(state.breeds) && state.breeds.filter(e => {
+            breeds:  Array.isArray(state.allBreeds) && state.allBreeds.filter(e => {
               return e.temperament &&  e.temperament.includes(action.payload)
 
               }

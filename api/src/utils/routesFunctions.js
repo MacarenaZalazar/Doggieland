@@ -6,7 +6,8 @@ const {Dog} = require('../db')
 async function getAllBreeds(){
     const api = await getAllApiDogs()
     const db = await getAllSqlDogs()
-    return [...api, ...db].sort()
+    const dogs = [...api, ...db].sort((a, b) =>  a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
+    return dogs
 }
 
 async function getBreedsByName(name){
