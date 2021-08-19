@@ -36,11 +36,11 @@ const initialState = { allBreeds:[], breeds: [], breedId: [], temperaments:[]}
             ...state, 
             breeds: [...state.breeds].sort((a,b) => b.name.toLowerCase().localeCompare(a.name.toLowerCase())) 
           } 
-         } else {
-            return {
-              ...state, 
-              breeds: state.allBreeds
-            }
+        } else {
+          return {
+            ...state, 
+            breeds: state.allBreeds
+          }
         }
       case GET_TEMPERAMENTS:
           return {
@@ -126,6 +126,6 @@ const initialState = { allBreeds:[], breeds: [], breedId: [], temperaments:[]}
     default:
     return state;
   }
- } 
+} 
   
-  export default rootReducer;
+export default rootReducer;

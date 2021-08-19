@@ -11,7 +11,6 @@ export default  function Breeds({breeds}) {
     function handleClick(e){
         e.preventDefault()
         dispatch(getBreeds())
-
     }
 
     function displayBreeds(data){
@@ -41,9 +40,9 @@ export default  function Breeds({breeds}) {
 
     return  breeds ? ( 
         <>  
-        <div id='marginTop'>
-            {displayBreeds(breeds)}
-        </div>
+            <div id='marginTop'>
+                {displayBreeds(breeds)}
+            </div>
         </>
         ) : (
             <p>loading</p>

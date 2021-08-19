@@ -11,18 +11,18 @@ export default function NavBar() {
     function handleClick(e){
         dispatch(clearIdBreed())
     }
+    
     return (
         breeds.length > 0 && <> 
-        <div className='nav-container'>
-            <Link to='/doggieland'>
-            <h1 onClick={handleClick} className='buttonNav'>Home</h1>
-            </Link>
-            <h1>Doggieland</h1>
-            <Link to='/doggieland/create'>
-            <h1 onClick={handleClick} className='buttonNav'>Create</h1>
-            </Link>
-        </div>
+            <div className='nav-container'>
+                <Link to='/doggieland'>
+                    <h1 onClick={handleClick} className='buttonNav'>Home</h1>
+                </Link>
+                    <h1>Doggieland</h1>
+                <Link to='/doggieland/create'>
+                    <h1 onClick={handleClick} className='buttonNav'>Create</h1>
+                </Link>
+            </div>
         </>
-)
-
+    )
 }

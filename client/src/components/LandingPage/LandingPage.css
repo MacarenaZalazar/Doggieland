@@ -1,4 +1,5 @@
 .ladingDiv{
+    padding-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,29 +12,35 @@
     display: block;
 }
 .ladingDiv h1{
+
     font-family: 'Amatic SC', cursive;
-    font-size: 40px;
+    font-size: 60px;
     margin: 15px;
 }
 .ladingDiv span{
-    font-size: 50px;
+  
+    font-size: 70px;
 }
 .ladingDiv button{
     cursor: pointer;
     text-align: center;
     margin: 5px 20px;
-    padding: 10px ;
-    font-size: 20px;
+    margin-bottom: 105px;
+    padding: 10px ;  
     padding: 15px 10px;
     border-radius: 50px;
     background: #d4c4b5;
     border: 1px solid #d4c4b5;
     font-family: 'Amatic SC', cursive;
+    font-size: 30px;
+    height: 90px;
+    width: 90px;
     color: #000
 }
 .ladingDiv button:hover{
-    height: 75px;
-    width: 75px;
+    font-size: 40px;
+    height: 110px;
+    width: 110px;
     background-color: white;
 
 }

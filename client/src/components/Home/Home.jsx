@@ -50,9 +50,8 @@ export default function Home(){
                     <Pagination  pageNumbers={pageNumbers} paginate={paginate} />
                 </div>
                 <Breeds breeds={currentITems} />
-             </> : (<h1 id='loading'>Loading...</h1>)}
-            </div>
+            </> : (<h1 id='loading'>Loading...</h1>)}
+        </div>
 
-        )
-    
+    )
 }

@@ -12,9 +12,9 @@ export default function Breed({breed}){
             {
                 breed.image ? <img className='dogImg' src={breed.image} alt={breed.name}/> : <p><loading className=""></loading></p>
             }
-             <p>{(breed.temperament>0) && <u>Temperament:</u>}</p><p>{(breed.temperament) && breed.temperament.join(', ')}</p>
+             <p>{(breed.temperament) && <u>Temperament:</u>}</p><p>{(breed.temperament) && breed.temperament.join(', ')}</p>
              <Link to={`/doggieland/${breed.id}`}>
-             <button>See More!</button>
+                <button>See More!</button>
             </Link>
         </>
 
