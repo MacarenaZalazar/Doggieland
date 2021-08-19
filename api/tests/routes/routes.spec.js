@@ -22,8 +22,8 @@ describe('Dogs routes', () => {
   beforeEach(() => Dog.sync({ force: true })
     .then(() => Dog.create(dog)));
   describe('GET /dogs', () => {
-    it('should get 200', () =>
-      agent.get('/dogs').expect(200)
+    it('should get 200', async () =>
+     await agent.get('/dogs').expect(200)
     );
   });
 });
@@ -45,11 +45,10 @@ describe('GET /dogs/6854', () => {
 
 
 describe('GET /dogs/?name=golden', () => {
-it('should get 200', () =>
-agent.get('/dogs/?name=golden')
-
-.expect(200)
-.expect('Content-Type', /json/))
+  it('should get 200', async () =>
+    await agent.get('/dogs/?name=golden')
+    .expect(200)
+    .expect('Content-Type', /json/))
 });
 
 
@@ -69,8 +68,8 @@ describe('Dog routes', () => {
 describe('Temperament routes', () => {
   beforeEach(() => Dog.sync({ force: true }));
   describe('GET /temperament', () => {
-    it('should get 200', () =>
-      agent.get('/temperament')
+    it('should get 200', async () =>
+     await agent.get('/temperament')
       .expect(200)
       .expect('Content-Type', /json/)
     );
