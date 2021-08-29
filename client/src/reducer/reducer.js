@@ -1,4 +1,4 @@
-import { GET_BREEDS, GET_BREEDS_BY_QUERY, GET_BREEDS_BY_ID, POST_BREED, DOG_ORDER_BY_AZ, DOG_FILTER_BY_ORIGIN, DOG_FILTER_BY_TEMPERAMENT, GET_TEMPERAMENTS, DOG_ORDER_BY_WEIGHT} from '../utils/utils'
+import { GET_BREEDS, GET_BREEDS_BY_QUERY, GET_BREEDS_BY_ID, DOG_ORDER_BY_AZ, DOG_FILTER_BY_ORIGIN, DOG_FILTER_BY_TEMPERAMENT, GET_TEMPERAMENTS, DOG_ORDER_BY_WEIGHT} from '../utils/utils'
 
 const initialState = { allBreeds:[], breeds: [], breedId: [], temperaments:[]}
 
@@ -117,12 +117,6 @@ const initialState = { allBreeds:[], breeds: [], breedId: [], temperaments:[]}
               breeds:[...state.breeds].sort((a,b) =>  a.name.localeCompare(b.name))
             }
         }
-       
-      case POST_BREED:
-        return {
-          ...state,
-          breedId: action.payload
-      }
     default:
     return state;
   }

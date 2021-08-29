@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 
 
 export default function CreateBreed() {
+
     const newDog = {
         name: '', 
         min_height: '',
@@ -32,7 +33,7 @@ export default function CreateBreed() {
     useEffect(() => {
         window.scrollTo(0, 0)
         dispatch(getTemperaments())
-    },[])
+    },[dispatch])
 
     function handleChange(e){
         e.preventDefault()

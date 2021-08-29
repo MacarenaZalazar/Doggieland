@@ -15,7 +15,7 @@ export default function BreedDetail(props) {
     useEffect(() => {
         window.scrollTo(0, 0)
         dispatch(getBreedsById(id))
-    }, [])
+    }, [dispatch])
    
     function handleClick(e){
         dispatch(clearIdBreed())
