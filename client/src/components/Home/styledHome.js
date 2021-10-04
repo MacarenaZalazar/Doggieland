@@ -1,9 +1,15 @@
-.homeContainer{
+import styled from "styled-components";
+
+export const HomeDiv = styled.div`
     display: flex;
     justify-content: center;
-    margin-top: 78px;
-}
-.filterAndPag{
+    margin-top: 80px;
+    h1{
+        font-family: 'Amatic SC', cursive;
+        font-size: 25px;
+    }
+`
+export const FiltersDiv = styled.div`
     position: fixed;
     background-color: #FDE860;
     font-family: 'Amatic SC', cursive;
@@ -16,8 +22,4 @@
     border-top:1px solid #7D732F;
     width: 100%;
     height: 145px;
-
-}
-#loading{
-    font-family: 'Amatic SC', cursive;
-}
+`

@@ -1,8 +1,9 @@
 import React from 'react'
 import Breed from './Breed'
-import './Breeds.css'
+//import './Breeds.css'
 import { useDispatch } from 'react-redux';
 import { getBreeds } from '../../actions';
+import { BreedsCont, DogsContainer, DoggieDiv, NotFound } from './styledBreeds';
 
 
 export default  function Breeds({breeds}) {
@@ -16,38 +17,37 @@ export default  function Breeds({breeds}) {
     function displayBreeds(data){
         if(typeof data === 'string'){
             return (
-                <div className='noFound'>
+                <NotFound>
                     <h3>No breeds where found</h3>
                     <button onClick={handleClick}>See All</button>
-                </div>
+                </NotFound>
             )
         } else {
             return data && (
-                <div className='dogsContainer'>
+                <DogsContainer>
                 {data.map((b, idx)=> {
                     return  (
-                        <div key={idx} className='doggieDiv'> 
-                        <Breed key={idx} breed={b}/>
-                        </div>
+                        <DoggieDiv key={idx} > 
+                            <Breed key={idx} breed={b}/>
+                        </DoggieDiv>
                         )
                     })}
-                 </div>
+                 </DogsContainer>
             )
         }
     }
     
     
 
-    return  breeds ? ( 
-        <>  
-            <div id='marginTop'>
-                {displayBreeds(breeds)}
-            </div>
-        </>
+    return  (
+    <BreedsCont>
+        {breeds ? ( 
+           <> {displayBreeds(breeds)} </>
         ) : (
             <p>loading</p>
-        )
-        
+        )}
+        </BreedsCont>
+    )
     
 }
 

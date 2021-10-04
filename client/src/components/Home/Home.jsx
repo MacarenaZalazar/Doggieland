@@ -2,9 +2,10 @@ import React, {useEffect, useState} from 'react'
 import Breeds from '../Breeds/Breeds'
 import {getBreeds,getTemperaments} from '../../actions/index'
 import { useDispatch, useSelector} from 'react-redux'
-import'./Home.css'
+//import'./Home.css'
 import Filters from '../Filters/Filters';
 import Pagination from '../Pagination/Pagination'
+import { FiltersDiv, HomeDiv } from './styledHome';
 
 
 
@@ -42,16 +43,16 @@ export default function Home(){
 
 
     return (
-        <div className='homeContainer'>
+        <HomeDiv>
           { breeds.length > 0 || (typeof breeds === 'string') ?  
             <>  
-                <div className='filterAndPag'>
+                <FiltersDiv>
                     <Filters temperaments={temperaments} paginate={paginate}/>
                     <Pagination  pageNumbers={pageNumbers} paginate={paginate} />
-                </div>
+                </FiltersDiv>
                 <Breeds breeds={currentITems} />
-            </> : (<h1 id='loading'>Loading...</h1>)}
-        </div>
+            </> : (<h1>Loading...</h1>)}
+        </HomeDiv>
 
     )
 }

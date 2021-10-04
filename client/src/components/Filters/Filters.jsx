@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import { filterByTemp, getBreedsByQuery, orderAZ, filterByOrigin, orderByWeight } from '../../actions/index'
 import { useDispatch } from "react-redux"
-import './Filters.css'
+import { FilterDiv } from './styledFilters';
 
 
 export default function Filters({temperaments, paginate}){
@@ -57,7 +57,7 @@ export default function Filters({temperaments, paginate}){
 
 
     return (
-        <div className='filterContainer'>
+        <FilterDiv>
             <div className='filterClass'> 
                 <span>Order by</span>
                 <div className='otroDivContainer'>
@@ -110,6 +110,6 @@ export default function Filters({temperaments, paginate}){
                 </form>
             </div>
         </div>
-    </div>
+    </FilterDiv>
     )
 }

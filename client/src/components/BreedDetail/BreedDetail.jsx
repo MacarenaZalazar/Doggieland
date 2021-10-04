@@ -3,15 +3,15 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { clearIdBreed, getBreedsById } from '../../actions';
 import { Link } from 'react-router-dom';
-import './BreedDetail.css'
+//import './BreedDetail.css'
+import { DetailContainer, DetailPage } from './styledDetail';
 
 export default function BreedDetail(props) {
   
     let id = props.match.params.id
     const dispatch = useDispatch()
     const b = useSelector(state => state.breedId[0])
-    console.log(b)
-    
+   
     useEffect(() => {
         window.scrollTo(0, 0)
         dispatch(getBreedsById(id))
@@ -21,9 +21,11 @@ export default function BreedDetail(props) {
         dispatch(clearIdBreed())
     }   
 
-    return b ? ( 
-        <div className='detailPage'>
-            <div className='containerDetail' >
+    return (
+        <DetailPage>
+            <DetailContainer>
+            {b ? ( 
+                <>
                 <h1>{(b.name) && b.name}</h1>
                 <img  src={b.image}  alt={b.name} />
                 <h3>Height: {b.height.join(' to ')} cm</h3> 
@@ -33,14 +35,10 @@ export default function BreedDetail(props) {
                 <Link to='/doggieland'>
                     <button onClick={handleClick}>Go Back!</button>
                 </Link>
-            </div>
-        </div>
-    ) : (
-        <div className='detailPage'>
-            <div className='containerDetail' >
-                <h1>Loading...</h1>
-            </div>
-        </div>
-
-    )
+                </>
+            ) : ( <h1>Loading...</h1> )}
+            </DetailContainer>
+        </DetailPage>
+        )
+        
 }
