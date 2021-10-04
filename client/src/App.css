@@ -60,6 +60,7 @@ table {
   }
 }
 #root{
+  font-family: 'Amatic SC', cursive;
   display: block;
   height: 100%; 
   background-color: #ffde15;

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './NavBar.css'
+import { ContainerDiv, NavLink, Title } from './Styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearIdBreed } from '../../actions';
+import { Link } from 'react-router-dom';
 
 
 export default function NavBar() {
@@ -14,15 +14,19 @@ export default function NavBar() {
     
     return (
         breeds.length > 0 && <> 
-            <div className='nav-container'>
-                <Link to='/doggieland'>
-                    <h1 onClick={handleClick} className='buttonNav'>Home</h1>
-                </Link>
-                    <h1>Doggieland</h1>
-                <Link to='/doggieland/create'>
-                    <h1 onClick={handleClick} className='buttonNav'>Create</h1>
-                </Link>
-            </div>
+            <ContainerDiv>
+                <NavLink onClick={handleClick} >
+                    <Link to='/doggieland'>
+                        Home
+                    </Link>
+                </NavLink>
+                    <Title>Doggieland</Title>
+                <NavLink onClick={handleClick}>
+                    <Link to='/doggieland/create'>
+                         Create
+                    </Link>
+                </NavLink>
+            </ContainerDiv>
         </>
     )
 }
